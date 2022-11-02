@@ -3,67 +3,81 @@ import React from 'react'
 function Sidebar() {
     return (
     <div>
+        <div className="sidebar-content js-simplebar">
+          <a className="sidebar-brand" href="index.html">
+            <span className="align-middle">Open-DI</span>
+          </a>
+
+          <ul className="sidebar-nav">
+            <li className="sidebar-header">
+              <b>Projet</b>
+            </li>
+
+            
+
+            <li className="sidebar-item">
+              <a className="sidebar-link" href="/home">
+                <i className="align-middle" data-feather="align-left"></i>
+                <span className="align-middle">Liste</span>
+              </a>
+            </li>
+
+            <li className="sidebar-item">
+              <a className="sidebar-link" href="">
+                <i className="align-middle" data-feather="log-in"></i>
+                <span className="align-middle">Archive</span>
+              </a>
+            </li>
+
+            <li className="sidebar-item">
+              <a className="sidebar-link" href="">
+                <i className="align-middle" data-feather="settings"></i>
+                <span className="align-middle">General</span>
+              </a>
+            </li>
+
+            <li className="sidebar-header"><b>Admin</b></li>
+
+            <li className="sidebar-item">
+              <a className="sidebar-link" href="">
+                <i className="align-middle" data-feather="square"></i>
+                <span className="align-middle">User</span>
+              </a>
+            </li>
+
+            <li className="sidebar-item">
+              <a className="sidebar-link" href="">
+                <i className="align-middle" data-feather="check-square"></i>
+                <span className="align-middle">Groupe utilisateur</span>
+              </a>
+            </li>
+
+            <li className="sidebar-item">
+              <a className="sidebar-link" href="">
+                <i className="align-middle" data-feather="grid"></i>
+                <span className="align-middle">Role</span>
+              </a>
+            </li>
+            
+            <li className="sidebar-header"><b>Journal</b></li>
+
+            <li className="sidebar-item">
+              <a className="sidebar-link" href="">
+                <i className="align-middle" data-feather="bar-chart-2"></i>
+                <span className="align-middle">Taches en cours</span>
+              </a>
+            </li>
+
+            <li className="sidebar-item">
+              <a className="sidebar-link" href="maps-google.html">
+                <i className="align-middle" data-feather="map"></i>
+                <span className="align-middle">Statistique</span>
+              </a>
+            </li>
+          </ul>
+          
+        </div>
        
-    <div className="flex-shrink-0 p-3 bg-white">
-    <a href="/" className="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
-      <svg className="bi me-2" width="30" height="24"></svg>
-      <span className="fs-5 fw-semibold">OPEN-DI</span>
-    </a>
-    <ul className="list-unstyled ps-0">
-      <li className="mb-1">
-        <button className="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
-          Home
-        </button>
-        <div className="collapse show" id="home-collapse">
-          <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" className="link-dark rounded">Overview</a></li>
-            <li><a href="#" className="link-dark rounded">Updates</a></li>
-            <li><a href="#" className="link-dark rounded">Reports</a></li>
-          </ul>
-        </div>
-      </li>
-      <li className="mb-1">
-        <button className="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-          Dashboard
-        </button>
-        <div className="collapse" id="dashboard-collapse">
-          <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" className="link-dark rounded">Overview</a></li>
-            <li><a href="#" className="link-dark rounded">Weekly</a></li>
-            <li><a href="#" className="link-dark rounded">Monthly</a></li>
-            <li><a href="#" className="link-dark rounded">Annually</a></li>
-          </ul>
-        </div>
-      </li>
-      <li className="mb-1">
-        <button className="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-          Orders
-        </button>
-        <div className="collapse" id="orders-collapse">
-          <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" className="link-dark rounded">New</a></li>
-            <li><a href="#" className="link-dark rounded">Processed</a></li>
-            <li><a href="#" className="link-dark rounded">Shipped</a></li>
-            <li><a href="#" className="link-dark rounded">Returned</a></li>
-          </ul>
-        </div>
-      </li>
-      <li className="border-top my-3"></li>
-      <li className="mb-1">
-        <button className="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-          Account
-        </button>
-        <div className="collapse" id="account-collapse">
-          <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" className="link-dark rounded">New...</a></li>
-            <li><a href="#" className="link-dark rounded">Profile</a></li>
-            <li><a href="#" className="link-dark rounded">Settings</a></li>
-            <li><a href="#" className="link-dark rounded">Sign out</a></li>
-          </ul>
-        </div>
-      </li>
-    </ul>
-  </div>
     </div>
     );
 }

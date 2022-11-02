@@ -9,8 +9,8 @@ body {
 }
 
 .form-signin {
-  width: 100%;
-  max-width: 330px;
+  width: 250%;
+  max-width: 430px;
   padding: 15px;
   display: block;
   margin-right: auto;
@@ -42,4 +42,6 @@ body {
 }
 .error-message{
   color: red;
+  text-align: center;
+  padding: 20px;
 }

@@ -30,12 +30,12 @@ const Login = () => {
       navigate("/home");
     }
 
-    console.log({ content });
+    //console.log({ content });
   };
 
   return (
     <div className="container">
-      <main className="form-signin">
+      <main className=" form-signin col-md-6">
         <form onSubmit={Connection}>
           <center><img
             className="mb-4"
@@ -49,8 +49,7 @@ const Login = () => {
           </h2>
           <b>OPEN DATA INTEGRATION TOOL</b>
           </center>
-          <span className={loginMessageClass}><b>{loginMessage}</b></span>
-          <br />
+          <center><span className={loginMessageClass}><b>{loginMessage}</b></span></center>
           <br />
           <div className="form-floating">
             <input
@@ -78,8 +77,9 @@ const Login = () => {
           <button className="w-100 btn btn-lg btn-primary" type="submit">
             Se connecter
           </button>
-          <p className="mt-5 mb-3 text-muted">&copy; Bluesquare 2022</p>
         </form>
+        <center><p className="mt-5 mb-3 text-muted">&copy; Bluesquare 2022</p></center>
+
       </main>
     </div>
   );
