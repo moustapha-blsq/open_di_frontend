@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 function Sidebar2() {
     return (
         <div class="quixnav">

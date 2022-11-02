@@ -50,7 +50,9 @@ const Home = () => {
 
   return (
     <div className="wrapper">
-        <Sidebar2 />
+      <nav id="sidebar" className="sidebar js-sidebar">
+        <Sidebar />
+      </nav>
 
       <div className="main">
         <Topbar />
