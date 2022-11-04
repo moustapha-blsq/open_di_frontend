@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import $ from "jquery";
 import Sidebar from "../companent/sidebar";
 import Sidebar2 from "../companent/sidebar2";
 import Topbar from "../companent/topbar";
@@ -7,10 +8,16 @@ import { useNavigate } from "react-router-dom";
 const Home = () => {
   const [nom_projet, setNom_projet] = useState("");
   const [description, setDescription] = useState("");
-  const [date_creation, setDate_creation] = useState(new Date());
+  const date = new Date()
+  const dateStr = date.toISOString().slice(0, 10).replace(/-/g, "-");
+  var seconds = String(date.getSeconds()).padStart(2, '0');
+  var minutes = String(date.getMinutes()).padStart(2, '0');
+  var hour = String(date.getHours()).padStart(2, '0');
+  var date_projet = dateStr+" à "+ hour + ":"+ minutes + ":"+ seconds;
+  const [date_creation, setDate_creation] = useState(date_projet);
   const [statut, setStatut] = useState(1);
   const [utilisateur, setUtilisateur] = useState(1);
-
+  console.log(date_projet)
   let navigate = useNavigate();
 
   const [all_projects, setAll_projects] = useState([]);
@@ -41,8 +48,12 @@ const Home = () => {
       statut,
       utilisateur,
     });
-    console.log(result);
+   // console.log(result);
+   this.props.history.push('/home');
   };
+  
+
+  
   const showProject = (pid) => {
     console.log(pid);
     navigate("/projet/" + pid);
@@ -58,14 +69,11 @@ const Home = () => {
         <Topbar />
         <main className="content">
           <div className="container-fluid p-0">
-            <h1 className="h3 mb-3">Projet</h1>
             <div className="row">
-              <div className="col-12 col-lg-8">
+              <div className="col-md-9 col-lg-9">
                 <div className="card" align="">
                   <div className="card-header">
-                    <h5 className="card-title mb-0">Liste</h5>
-                    <hr />
-                    <table className="table table-sm">
+                    <table className="table">
                       <thead>
                         <tr>
                           <th> #</th>
@@ -82,26 +90,36 @@ const Home = () => {
                             <td>{item.nom_projet}</td>
                             <td>{item.date_creation} </td>
                             <td>{item.description} </td>
-                            <td></td>
+
                             <td>
-                              <span>
-                                <a
-                                  href=""
-                                  onClick={() => showProject(item.id)}
+                              <div
+                                class="btn-group btn-group-lg mb-3"
+                                role="group"
+                                aria-label="Large button group"
+                              >
+                                <button
+                                  type="button"
+                                  class="btn btn-primary"
                                   title="Ouvrir"
+                                  onClick={() => showProject(item.id)}
                                 >
-                                    <i className="fa fa-eye"></i>
-                                </a>
-                              </span>
-                              <span>
-                                <a title="Archiver">
-                                    <i className="fa fa-archive"></i>
-                                </a>
-                              </span>
-                                
-                                <a title="Editer">
-                                    <i className="fa fa-edit"></i>
-                                </a>
+                                  <i className="fa fa-eye"></i>
+                                </button>
+                                <button
+                                  type="button"
+                                  class="btn btn-primary"
+                                  title="Archiver"
+                                >
+                                  <i className="fa fa-archive"></i>
+                                </button>
+                                <button
+                                  type="button"
+                                  class="btn btn-primary"
+                                  title="Editer"
+                                >
+                                  <i className="fa fa-edit"></i>{" "}
+                                </button>
+                              </div>
                             </td>
                           </tr>
                         </tbody>
@@ -110,53 +128,45 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-12 col-lg-4">
+              <div className="col-md-3 col-lg-3">
+                
                 <div className="card" align="">
+                <hr/>
+                <center><legend><h5><b>AJOUT NOUVEAU PROJET</b></h5></legend></center>
                   <div className="card-header">
-                    <h5 className="card-title mb-0">Nouveau projet</h5>
-                    <hr />
                     <form onSubmit={createProject}>
-                      <div className="">
-                        <div>
-                          <label className="form-check">
-                            Nom projet <br />
-                            <input
-                              className="form-control"
-                              type="text"
-                              name="nom_projet"
-                              placeholder="project name"
-                              required
-                              onChange={(e) =>
-                                setNom_projet(e.target.nom_projet.value)
-                              }
-                            />
-                          </label>
-                        </div>
-                        <br />
-                        <div>
-                          <label className="form-check">
-                            Description <br />
-                            <textarea
-                              className="form-control"
-                              type="text"
-                              name="description"
-                              placeholder="say something"
-                              required
-                              maxLength="250"
-                              onChange={(e) =>
-                                setDescription(e.target.description.value)
-                              }
-                            />
-                          </label>
-                        </div>
+                      <br />
+                      <div className="form-floating">
+                        <input
+                          type="text"
+                          className="form-control"
+                          id=""
+                          placeholder=""
+                          required
+                          name="nom_projet"
+                        />
 
-                        <div className="card-body">
-                          <button type="submit" className="btn btn-primary">
-                            <i className="align-middle" data-feather=""></i>{" "}
-                            Ajouter projet
-                          </button>
-                        </div>
+                        <label htmlFor="floatingInput">Nom projet</label>
                       </div>
+                      <br />
+                      <div className="form-floating">
+                        <textarea
+                          className="form-control"
+                          id=""
+                          placeholder=""
+                          name="description"
+                          required row="5"
+                        ></textarea>
+
+                        <label htmlFor="floatingPassword">description</label>
+                      </div>
+                      <br />
+                      <button
+                        className="w-100 btn btn-lg btn-success"
+                        type="submit"
+                      >
+                        Enregister
+                      </button>
                     </form>
                   </div>
                 </div>

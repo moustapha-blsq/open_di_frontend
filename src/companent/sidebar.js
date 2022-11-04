@@ -5,9 +5,14 @@ function Sidebar() {
     <div>
         <div className="sidebar-content js-simplebar">
           <a className="sidebar-brand" href="index.html">
-            <span className="align-middle">Open-DI</span>
+            <span className="align-middle"><img
+            className="mb-4"
+            src="../bs-logo.png"
+            alt=""
+            width="40"
+            height="45"
+           /> OPEN-DI</span>
           </a>
-
           <ul className="sidebar-nav">
             <li className="sidebar-header">
               <b>Projet</b>

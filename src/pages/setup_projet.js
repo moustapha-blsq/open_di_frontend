@@ -59,7 +59,11 @@ const Setup_projet = () => {
                     </div>
                     <div className="card-body">
                       <button type="submit" className="btn btn-primary">
-                        Extraire données
+                        <i className="fa fa-download"></i> Extraire données
+                      </button>
+                      <font color="white"> - </font>
+                      <button type="submit" className="btn btn-success">
+                      <i className="fa fa-bookmark"></i> Enregistrer
                       </button>
                     </div>
                   </form>
@@ -121,8 +125,12 @@ const Setup_projet = () => {
                         </label>
                       </div>
                       <div className="card-body">
+                        <button type="submit" className="btn btn-primary">
+                        <i className="fa fa-wifi"></i> Tester connexion
+                        </button>
+                        <font color="white"> - </font>
                         <button type="submit" className="btn btn-success">
-                          Tester connexion
+                        <i className="fa fa-bookmark"></i> Enregistrer
                         </button>
                       </div>
                     </div>
