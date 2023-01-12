@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import $ from "jquery";
 import Sidebar from "../companent/sidebar";
-import Sidebar2 from "../companent/sidebar2";
+import Menu from "../companent/menu"
 import Topbar from "../companent/topbar";
+import jQuery from 'jquery';
 import { useNavigate } from "react-router-dom";
 const Home = () => {
   const [nom_projet, setNom_projet] = useState("");
   const [description, setDescription] = useState("");
-  const date = new Date()
+  const date = new Date();
   const dateStr = date.toISOString().slice(0, 10).replace(/-/g, "-");
-  var seconds = String(date.getSeconds()).padStart(2, '0');
-  var minutes = String(date.getMinutes()).padStart(2, '0');
-  var hour = String(date.getHours()).padStart(2, '0');
-  var date_projet = dateStr+" à "+ hour + ":"+ minutes + ":"+ seconds;
+  var seconds = String(date.getSeconds()).padStart(2, "0");
+  var minutes = String(date.getMinutes()).padStart(2, "0");
+  var hour = String(date.getHours()).padStart(2, "0");
+  var date_projet = dateStr + " à " + hour + ":" + minutes + ":" + seconds;
   const [date_creation, setDate_creation] = useState(date_projet);
   const [statut, setStatut] = useState(1);
   const [utilisateur, setUtilisateur] = useState(1);
-  console.log(date_projet)
+  console.log(date_projet);
   let navigate = useNavigate();
 
   const [all_projects, setAll_projects] = useState([]);
@@ -26,15 +26,6 @@ const Home = () => {
       .get(`http://127.0.0.1:8000/api/liste_projet/`)
       .then((res) => setAll_projects(res.data));
   }, []);
-  //setAll_projects("test test test")
-  //console.log({all_projects})
-  //const request = {
-  /* const nom_projet' : nom_projet,
-          'date_creation' : date_creation,
-          'description' : description,
-          'statut' : statut,
-          'utilisateur' : utilisateur*/
-  // }
   const createProject = async (e) => {
     e.preventDefault();
     const nom_projet = e.target.nom_projet.value;
@@ -48,12 +39,9 @@ const Home = () => {
       statut,
       utilisateur,
     });
-   // console.log(result);
-   this.props.history.push('/home');
+    this.props.history.push("/home");
   };
-  
 
-  
   const showProject = (pid) => {
     console.log(pid);
     navigate("/projet/" + pid);
@@ -62,7 +50,7 @@ const Home = () => {
   return (
     <div className="wrapper">
       <nav id="sidebar" className="sidebar js-sidebar">
-        <Sidebar />
+        <Menu />
       </nav>
 
       <div className="main">
@@ -73,66 +61,75 @@ const Home = () => {
               <div className="col-md-9 col-lg-9">
                 <div className="card" align="">
                   <div className="card-header">
-                    <table className="table">
-                      <thead>
-                        <tr>
-                          <th> #</th>
-                          <th>Nom du projet</th>
-                          <th>Date creation</th>
-                          <th>Description</th>
-                          <th>Action</th>
-                        </tr>
-                      </thead>
-                      {all_projects.map((item) => (
-                        <tbody>
+                    <div className="table_scroller">
+                      <table className="table table-responsive">
+                        <thead>
                           <tr>
-                            <td>#</td>
-                            <td>{item.nom_projet}</td>
-                            <td>{item.date_creation} </td>
-                            <td>{item.description} </td>
-
-                            <td>
-                              <div
-                                class="btn-group btn-group-lg mb-3"
-                                role="group"
-                                aria-label="Large button group"
-                              >
-                                <button
-                                  type="button"
-                                  class="btn btn-primary"
-                                  title="Ouvrir"
-                                  onClick={() => showProject(item.id)}
-                                >
-                                  <i className="fa fa-eye"></i>
-                                </button>
-                                <button
-                                  type="button"
-                                  class="btn btn-primary"
-                                  title="Archiver"
-                                >
-                                  <i className="fa fa-archive"></i>
-                                </button>
-                                <button
-                                  type="button"
-                                  class="btn btn-primary"
-                                  title="Editer"
-                                >
-                                  <i className="fa fa-edit"></i>{" "}
-                                </button>
-                              </div>
-                            </td>
+                            <th> #</th>
+                            <th>Nom du projet</th>
+                            <th>Date creation</th>
+                            <th>Description</th>
+                            <th>Action</th>
                           </tr>
-                        </tbody>
-                      ))}
-                    </table>
+                        </thead>
+                        {all_projects.map((item) => (
+                          <tbody>
+                            <tr>
+                              <td>#</td>
+                              <td>{item.nom_projet}</td>
+                              <td>{item.date_creation} </td>
+                              <td>{item.description} </td>
+
+                              <td>
+                                <div
+                                  className="btn-group btn-group-lg mb-3"
+                                  role="group"
+                                  aria-label="Large button group"
+                                >
+                                  <button
+                                    type="button"
+                                    className="btn btn-primary"
+                                    title="Ouvrir"
+                                    onClick={() => showProject(item.id)}
+                                  >
+                                    <i className="fa fa-eye"></i>
+                                  </button>
+                                  <font color="white">-</font>
+                                  <button
+                                    type="button"
+                                    className="btn btn-success"
+                                    title="Archiver"
+                                  >
+                                    <i className="fa fa-archive"></i>
+                                  </button>
+                                  <font color="white">-</font>
+                                  <button
+                                    type="button"
+                                    className="btn btn-warning"
+                                    title="Editer"
+                                  >
+                                    <i className="fa fa-edit"></i>{" "}
+                                  </button>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        ))}
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>
               <div className="col-md-3 col-lg-3">
-                
                 <div className="card" align="">
-                <hr/>
-                <center><legend><h5><b>AJOUT NOUVEAU PROJET</b></h5></legend></center>
+                  <hr />
+                  <center>
+                    <legend>
+                      <h5>
+                        <b>AJOUT NOUVEAU PROJET</b>
+                      </h5>
+                    </legend>
+                  </center>
                   <div className="card-header">
                     <form onSubmit={createProject}>
                       <br />
@@ -155,7 +152,8 @@ const Home = () => {
                           id=""
                           placeholder=""
                           name="description"
-                          required row="5"
+                          required
+                          row="5"
                         ></textarea>
 
                         <label htmlFor="floatingPassword">description</label>

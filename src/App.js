@@ -1,19 +1,18 @@
 import './App.css';
 import './auth.css';
-//import $ from 'jquery';
+
 import './css/app.css';
 import './css/app.css.map';
+import './css/styles.css';
 import './js/app';
-import './js/postcss.config';
 
+import Taches from './pages/taches';
 import Login from './pages/login';
 import Home2 from './pages/home2';
-import Home from './pages/home';
 import Setup_projet from './pages/setup_projet';
-
-/* <link href="vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
-    <!-- Custom Stylesheet -->
-    <link href="css/style.css" rel="stylesheet"> */
+import Users from './pages/user';
+import Create_user from './pages/create_user';
+import Detail_projet from './pages/detail_projet';
 
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 
@@ -25,8 +24,11 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Login/>}/>
-          <Route path='/home' element={<Home/>}/>
-          <Route path='/projet/:pid' element={<Setup_projet/>}/>
+          <Route path='/home' element={<Home2/>}/>
+          <Route path='/projet/:pid' element={<Detail_projet/>}/>
+          <Route path='/users' element={<Users/>}/>
+          <Route path='/create_user' element={<Create_user/>}/>
+          <Route path='/taches' element={<Taches/>}/>
         </Routes>
       </BrowserRouter>
     </div>
